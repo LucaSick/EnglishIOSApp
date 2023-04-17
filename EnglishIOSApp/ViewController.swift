@@ -18,7 +18,6 @@ class ViewController: UIViewController {
     }
 
     @IBAction func SignInButton(_ sender: UIButton) { // TODO: обработку ошибок
-        print("OMG\n")
         if (!emailField.hasText) {
             print("No email")
             return
