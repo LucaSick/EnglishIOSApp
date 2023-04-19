@@ -16,6 +16,7 @@
 		E95A077B29EB3B7200C84290 /* EnglishIOSAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95A077A29EB3B7200C84290 /* EnglishIOSAppTests.swift */; };
 		E95A078529EB3B7200C84290 /* EnglishIOSAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95A078429EB3B7200C84290 /* EnglishIOSAppUITests.swift */; };
 		E95A078729EB3B7200C84290 /* EnglishIOSAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95A078629EB3B7200C84290 /* EnglishIOSAppUITestsLaunchTests.swift */; };
+		E9ED8A9029F0709100F99EAE /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ED8A8F29F0709100F99EAE /* RegistrationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		E95A078029EB3B7200C84290 /* EnglishIOSAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EnglishIOSAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E95A078429EB3B7200C84290 /* EnglishIOSAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnglishIOSAppUITests.swift; sourceTree = "<group>"; };
 		E95A078629EB3B7200C84290 /* EnglishIOSAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnglishIOSAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E9ED8A8F29F0709100F99EAE /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				E95A076329EB3B7000C84290 /* AppDelegate.swift */,
 				E95A076529EB3B7000C84290 /* SceneDelegate.swift */,
 				E95A076729EB3B7000C84290 /* ViewController.swift */,
+				E9ED8A8F29F0709100F99EAE /* RegistrationViewController.swift */,
 				E95A076929EB3B7000C84290 /* Main.storyboard */,
 				E95A076C29EB3B7200C84290 /* Assets.xcassets */,
 				E95A076E29EB3B7200C84290 /* LaunchScreen.storyboard */,
@@ -260,6 +263,7 @@
 			files = (
 				E95A076829EB3B7000C84290 /* ViewController.swift in Sources */,
 				E95A076429EB3B7000C84290 /* AppDelegate.swift in Sources */,
+				E9ED8A9029F0709100F99EAE /* RegistrationViewController.swift in Sources */,
 				E95A076629EB3B7000C84290 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

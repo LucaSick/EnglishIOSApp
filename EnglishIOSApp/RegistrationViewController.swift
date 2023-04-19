@@ -1,21 +1,13 @@
 //
-//  ViewController.swift
+//  RegistrationViewController.swift
 //  EnglishIOSApp
 //
-//  Created by Lucas Gvasalia on 15.04.2023.
+//  Created by Lucas Gvasalia on 19.04.2023.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
-
-    @IBOutlet weak var passwordField: UITextField!
-    @IBOutlet weak var emailField: UITextField!
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
+class RegistrationViewController: UIViewController {
     
     func isValidEmail(testStr:String) -> Bool {
         let emailRegEx = "[1-9a-zA-Z_\\.]+@[a-zA-Z_]+\\.[a-zA-Z]{2,3}"
@@ -30,30 +22,55 @@ class ViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
 
-    @IBAction func SignInButton(_ sender: UIButton) { // TODO: обработку ошибок
-        if (!emailField.hasText) {
-            showAlert(title: "Ошибка во время входа", message: "Не введена почта")
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var password2TextField: UITextField!
+    @IBOutlet weak var studentTeacher: UISegmentedControl!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+    }
+    
+    @IBAction func RegisterButton(_ sender: Any) {
+        if (!emailTextField.hasText) {
+            showAlert(title: "Ошибка во время регистрации", message: "Не введена почта")
             return
         }
         
-        if (!passwordField.hasText) {
-            showAlert(title: "Ошибка во время входа", message: "Не введен пароль")
+        if (!passwordTextField.hasText) {
+            showAlert(title: "Ошибка во время регистрации", message: "Не введен пароль")
             return
         }
         
-        if (!isValidEmail(testStr: emailField.text!)) {
-            showAlert(title: "Ошибка во время входа", message: "Некорретная почта")
+        if (!password2TextField.hasText) {
+            showAlert(title: "Ошибка во время регистрации", message: "Не введено подтверждение пароля")
             return
         }
-            
-        guard let url = URL(string: "http://localhost:8080/authApi/sign-in-request") else { return }
+        
+        if (!isValidEmail(testStr: emailTextField.text!)) {
+            showAlert(title: "Ошибка во время регистрации", message: "Некорректная почта")
+            return
+        }
+        
+        if (password2TextField.text! != passwordTextField.text!) {
+            showAlert(title: "Ошибка во время регистрации", message: "Пароли не совпадают")
+            return
+        }
+        
+        guard let url = URL(string: "http://localhost:8080/authApi/registration-request") else { return }
         
         struct Body: Codable {
             let email: String
             let password: String
+            let role: String
         }
         
-        let request_body = Body(email: emailField.text!, password: passwordField.text!)
+        let role = studentTeacher.titleForSegment(at: studentTeacher.selectedSegmentIndex) == "Студент" ? "Student" : "Teacher"
+        print(role)
+        
+        let request_body = Body(email: emailTextField.text!, password: passwordTextField.text!, role: role)
 
         guard let jsonData = try? JSONEncoder().encode(request_body) else {
             print("Error: Trying to convert model to JSON data")
@@ -98,20 +115,26 @@ class ViewController: UIViewController {
                 return
             }
         }.resume()
-        
-    }
-    
-    
-    @IBAction func RegistrationButton(_ sender: Any) {
-//        var curr = self.navigationController?.presentingViewController
-//        while curr?.presentingViewController != nil {
-//            curr = curr?.presentingViewController
+        showAlert(title: "Регистрация прошла успешно", message: "Ваш аккаунт был успешно создан")
+//        do {
+//            sleep(1)
 //        }
-//        curr?.dismiss(animated: true, completion: nil)
-        let registrationViewController = self.storyboard?.instantiateViewController(withIdentifier: "RegistrationViewController") as!RegistrationViewController
-        
-        self.present(registrationViewController, animated: true)
+//        self.dismiss(animated: true, completion: nil)
     }
     
-}
+    @IBAction func BackButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    /*
+    // MARK: - Navigation
 
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+}
