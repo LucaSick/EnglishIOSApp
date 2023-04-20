@@ -116,10 +116,6 @@ class RegistrationViewController: UIViewController {
             }
         }.resume()
         showAlert(title: "Регистрация прошла успешно", message: "Ваш аккаунт был успешно создан")
-//        do {
-//            sleep(1)
-//        }
-//        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func BackButton(_ sender: Any) {

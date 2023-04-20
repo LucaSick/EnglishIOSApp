@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     }
     
     func isValidEmail(testStr:String) -> Bool {
-        let emailRegEx = "[1-9a-zA-Z_\\.]+@[a-zA-Z_]+\\.[a-zA-Z]{2,3}"
+        let emailRegEx = "[1-9a-zA-Z_\\.]+@[a-zA-Z_\\.]+\\.[a-zA-Z]{2,3}"
         
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: testStr)
@@ -65,7 +65,9 @@ class ViewController: UIViewController {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type") // the request is JSON
 
         request.httpBody = jsonData
-        URLSession.shared.dataTask(with: request) { data, response, error in
+        var success = true
+        var code = 200
+        let task = URLSession.shared.dataTask(with: request) { [self] data, response, error in
             guard error == nil else {
                 print("Error: error calling POST")
                 print(error!)
@@ -76,13 +78,28 @@ class ViewController: UIViewController {
                 return
             }
             if let httpresponse = response as? HTTPURLResponse {
-                print(httpresponse.statusCode)
+                code = httpresponse.statusCode
+                if (code == 500) {
+                    DispatchQueue.main.async {
+                        self.showAlert(title: "Ошибка во время входа", message: "Попробуйте снова")
+                        return
+                    }
+                }
+                print(code)
             }
             do {
                 guard let jsonObject = try JSONSerialization.jsonObject(with: data) as? [String: Any] else {
                     print("Error: Cannot convert data to JSON object")
                     return
                 }
+                success = jsonObject["success"] as! Bool
+                if (success == false) {
+                    DispatchQueue.main.async {
+                        self.showAlert(title: "Ошибка во время входа", message: "Неверная почта или пароль")
+                        return
+                    }
+                }
+                print(success)
                 guard let prettyJsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted) else {
                     print("Error: Cannot convert JSON object to Pretty JSON data")
                     return
@@ -91,23 +108,18 @@ class ViewController: UIViewController {
                     print("Error: Couldn't print JSON in String")
                     return
                 }
-                
                 print(prettyPrintedJson)
             } catch {
                 print("Error: Trying to convert JSON data to string")
                 return
             }
-        }.resume()
+        }
+        task.resume()
         
     }
     
     
     @IBAction func RegistrationButton(_ sender: Any) {
-//        var curr = self.navigationController?.presentingViewController
-//        while curr?.presentingViewController != nil {
-//            curr = curr?.presentingViewController
-//        }
-//        curr?.dismiss(animated: true, completion: nil)
         let registrationViewController = self.storyboard?.instantiateViewController(withIdentifier: "RegistrationViewController") as!RegistrationViewController
         
         self.present(registrationViewController, animated: true)
