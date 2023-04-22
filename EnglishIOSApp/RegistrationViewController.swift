@@ -59,7 +59,7 @@ class RegistrationViewController: UIViewController {
             return
         }
         
-        guard let url = URL(string: "http://localhost:8080/authApi/registration-request") else { return }
+        guard let url = URL(string: "http://localhost:8080/authApi/registration-request-mobile") else { return }
         
         struct Body: Codable {
             let email: String
@@ -115,11 +115,6 @@ class RegistrationViewController: UIViewController {
                 return
             }
         }.resume()
-        showAlert(title: "Регистрация прошла успешно", message: "Ваш аккаунт был успешно создан")
-    }
-    
-    @IBAction func BackButton(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
     }
     
     

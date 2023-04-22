@@ -8,13 +8,34 @@
 import UIKit
 
 class ViewController: UIViewController {
-
     @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var RegistrationButton: UIButton!
     @IBOutlet weak var emailField: UITextField!
-
+    @IBOutlet weak var SignInButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        SignInButton.layer.cornerRadius = SignInButton.frame.height / 2
+        RegistrationButton.layer.cornerRadius = RegistrationButton.frame.height / 2
+        let bottomLine1 = CALayer()
+        bottomLine1.frame = CGRectMake(0.0, emailField.frame.height - 1, emailField.frame.width, 1.0)
+        bottomLine1.backgroundColor = UIColor.red.cgColor
+        emailField.borderStyle = UITextField.BorderStyle.none
+        emailField.layer.addSublayer(bottomLine1)
+        let bottomLine2 = CALayer()
+        bottomLine2.frame = CGRectMake(0.0, passwordField.frame.height - 1, passwordField.frame.width, 1.0)
+        bottomLine2.backgroundColor = UIColor.red.cgColor
+        passwordField.borderStyle = UITextField.BorderStyle.none
+        passwordField.layer.addSublayer(bottomLine2)
+        passwordField.attributedPlaceholder = NSAttributedString(
+            string: "Пароль",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.red]
+        )
+        emailField.attributedPlaceholder = NSAttributedString(
+            string: "Почта",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.red]
+        )
+        self.navigationController?.navigationBar.titleTextAttributes =
+        [NSAttributedString.Key.foregroundColor: UIColor.red]
     }
     
     func isValidEmail(testStr:String) -> Bool {
@@ -23,7 +44,7 @@ class ViewController: UIViewController {
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: testStr)
     }
-    
+
     func showAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(action) in alert.dismiss(animated: true, completion: nil)}))
@@ -116,13 +137,6 @@ class ViewController: UIViewController {
         }
         task.resume()
         
-    }
-    
-    
-    @IBAction func RegistrationButton(_ sender: Any) {
-        let registrationViewController = self.storyboard?.instantiateViewController(withIdentifier: "RegistrationViewController") as!RegistrationViewController
-        
-        self.present(registrationViewController, animated: true)
     }
     
 }
