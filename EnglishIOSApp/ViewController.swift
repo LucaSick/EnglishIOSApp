@@ -8,14 +8,8 @@
 import UIKit
 
 class ViewController: UIViewController {
-    @IBOutlet weak var passwordField: UITextField!
-    @IBOutlet weak var RegistrationButton: UIButton!
-    @IBOutlet weak var emailField: UITextField!
-    @IBOutlet weak var SignInButton: UIButton!
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        SignInButton.layer.cornerRadius = SignInButton.frame.height / 2
-        RegistrationButton.layer.cornerRadius = RegistrationButton.frame.height / 2
+    
+    func EditTextFields() {
         let bottomLine1 = CALayer()
         bottomLine1.frame = CGRectMake(0.0, emailField.frame.height - 1, emailField.frame.width, 1.0)
         bottomLine1.backgroundColor = UIColor.red.cgColor
@@ -34,6 +28,17 @@ class ViewController: UIViewController {
             string: "Почта",
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.red]
         )
+    }
+    
+    @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var RegistrationButton: UIButton!
+    @IBOutlet weak var emailField: UITextField!
+    @IBOutlet weak var SignInButton: UIButton!
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        SignInButton.layer.cornerRadius = SignInButton.frame.height / 2
+        RegistrationButton.layer.cornerRadius = RegistrationButton.frame.height / 2
+        EditTextFields()
         self.navigationController?.navigationBar.titleTextAttributes =
         [NSAttributedString.Key.foregroundColor: UIColor.red]
     }

@@ -8,11 +8,23 @@
 import UIKit
 
 class EmailConfirmationViewController: UIViewController {
+    
+    func EditTextFields() {
+        let bottomLine1 = CALayer()
+        bottomLine1.frame = CGRectMake(0.0, codeTextField.frame.height - 1, codeTextField.frame.width, 1.0)
+        bottomLine1.backgroundColor = UIColor.red.cgColor
+        codeTextField.borderStyle = UITextField.BorderStyle.none
+        codeTextField.layer.addSublayer(bottomLine1)
+        codeTextField.attributedPlaceholder = NSAttributedString(
+            string: "Введите код",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.red]
+        )
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        EditTextFields()
+        ConfirmButton.layer.cornerRadius = ConfirmButton.frame.height / 2
     }
     
     func showAlert(title: String, message: String) {
@@ -23,6 +35,7 @@ class EmailConfirmationViewController: UIViewController {
     
     @IBOutlet weak var codeTextField: UITextField!
     
+    @IBOutlet weak var ConfirmButton: UIButton!
     @IBAction func ConfirmEmail(_ sender: Any) {
         if (!codeTextField.hasText) {
             showAlert(title: "Ошибка во время подтверждения почты", message: "Не введен код")
@@ -83,14 +96,5 @@ class EmailConfirmationViewController: UIViewController {
             }
         }.resume()
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

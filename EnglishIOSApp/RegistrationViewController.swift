@@ -21,7 +21,39 @@ class RegistrationViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(action) in alert.dismiss(animated: true, completion: nil)}))
         self.present(alert, animated: true, completion: nil)
     }
+    
+    func EditTextFields() {
+        let bottomLine1 = CALayer()
+        bottomLine1.frame = CGRectMake(0.0, emailTextField.frame.height - 1, emailTextField.frame.width, 1.0)
+        bottomLine1.backgroundColor = UIColor.red.cgColor
+        emailTextField.borderStyle = UITextField.BorderStyle.none
+        emailTextField.layer.addSublayer(bottomLine1)
+        let bottomLine2 = CALayer()
+        bottomLine2.frame = CGRectMake(0.0, passwordTextField.frame.height - 1, passwordTextField.frame.width, 1.0)
+        bottomLine2.backgroundColor = UIColor.red.cgColor
+        passwordTextField.borderStyle = UITextField.BorderStyle.none
+        passwordTextField.layer.addSublayer(bottomLine2)
+        let bottomLine3 = CALayer()
+        bottomLine3.frame = CGRectMake(0.0, password2TextField.frame.height - 1, password2TextField.frame.width, 1.0)
+        bottomLine3.backgroundColor = UIColor.red.cgColor
+        password2TextField.borderStyle = UITextField.BorderStyle.none
+        password2TextField.layer.addSublayer(bottomLine3)
+        passwordTextField.attributedPlaceholder = NSAttributedString(
+            string: "Пароль",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.red]
+        )
+        password2TextField.attributedPlaceholder = NSAttributedString(
+            string: "Пароль еще раз",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.red]
+        )
+        emailTextField.attributedPlaceholder = NSAttributedString(
+            string: "Почта",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.red]
+        )
+    }
 
+    
+    @IBOutlet weak var RegistrationButton: UIButton!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var password2TextField: UITextField!
@@ -29,7 +61,9 @@ class RegistrationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        EditTextFields()
+        RegistrationButton.layer.cornerRadius = RegistrationButton.frame.height / 2
+        studentTeacher.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: UIControl.State.selected)
         // Do any additional setup after loading the view.
     }
     
@@ -100,6 +134,15 @@ class RegistrationViewController: UIViewController {
                     print("Error: Cannot convert data to JSON object")
                     return
                 }
+                let success = jsonObject["success"] as! Bool
+                print(success)
+                if (success == false) {
+                    let reason = jsonObject["reason"] as! String
+                    DispatchQueue.main.async {
+                        self.showAlert(title: "Ошибка во время регистрации", message: reason)
+                        return
+                    }
+                }
                 guard let prettyJsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted) else {
                     print("Error: Cannot convert JSON object to Pretty JSON data")
                     return
@@ -110,6 +153,10 @@ class RegistrationViewController: UIViewController {
                 }
                 
                 print(prettyPrintedJson)
+                DispatchQueue.main.async {
+                    let EmailConfirmationViewController = self.storyboard?.instantiateViewController(withIdentifier: "EmailConfirmationViewController") as! EmailConfirmationViewController
+                    self.present(EmailConfirmationViewController, animated:true, completion:nil)
+                }
             } catch {
                 print("Error: Trying to convert JSON data to string")
                 return
