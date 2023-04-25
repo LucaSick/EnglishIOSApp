@@ -44,7 +44,7 @@ class ViewController: UIViewController {
     }
     
     func isValidEmail(testStr:String) -> Bool {
-        let emailRegEx = "[1-9a-zA-Z_\\.]+@[a-zA-Z_\\.]+\\.[a-zA-Z]{2,3}"
+        let emailRegEx = "[1-9a-zA-Z_\\.]+@[a-zA-Z_]+\\.[a-zA-Z]{2,3}"
         
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: testStr)

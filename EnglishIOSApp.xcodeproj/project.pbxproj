@@ -18,6 +18,9 @@
 		E95A078729EB3B7200C84290 /* EnglishIOSAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95A078629EB3B7200C84290 /* EnglishIOSAppUITestsLaunchTests.swift */; };
 		E9ED8A9029F0709100F99EAE /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9ED8A8F29F0709100F99EAE /* RegistrationViewController.swift */; };
 		E9FD5AB429F43D9400E11066 /* EmailConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FD5AB329F43D9300E11066 /* EmailConfirmationViewController.swift */; };
+		E9FD5ABE29F8661500E11066 /* FirstPasswordChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FD5ABD29F8661500E11066 /* FirstPasswordChangeViewController.swift */; };
+		E9FD5AC029F8663A00E11066 /* SecondPasswordChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FD5ABF29F8663A00E11066 /* SecondPasswordChangeViewController.swift */; };
+		E9FD5AC229F8883300E11066 /* EnglishSecond.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E9FD5AC129F8883300E11066 /* EnglishSecond.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,9 @@
 		E95A078629EB3B7200C84290 /* EnglishIOSAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnglishIOSAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E9ED8A8F29F0709100F99EAE /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		E9FD5AB329F43D9300E11066 /* EmailConfirmationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailConfirmationViewController.swift; sourceTree = "<group>"; };
+		E9FD5ABD29F8661500E11066 /* FirstPasswordChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstPasswordChangeViewController.swift; sourceTree = "<group>"; };
+		E9FD5ABF29F8663A00E11066 /* SecondPasswordChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondPasswordChangeViewController.swift; sourceTree = "<group>"; };
+		E9FD5AC129F8883300E11066 /* EnglishSecond.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = EnglishSecond.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +118,9 @@
 				E95A076C29EB3B7200C84290 /* Assets.xcassets */,
 				E95A076E29EB3B7200C84290 /* LaunchScreen.storyboard */,
 				E95A077129EB3B7200C84290 /* Info.plist */,
+				E9FD5ABD29F8661500E11066 /* FirstPasswordChangeViewController.swift */,
+				E9FD5ABF29F8663A00E11066 /* SecondPasswordChangeViewController.swift */,
+				E9FD5AC129F8883300E11066 /* EnglishSecond.jpg */,
 			);
 			path = EnglishIOSApp;
 			sourceTree = "<group>";
@@ -239,6 +248,7 @@
 			files = (
 				E95A077029EB3B7200C84290 /* LaunchScreen.storyboard in Resources */,
 				E95A076D29EB3B7200C84290 /* Assets.xcassets in Resources */,
+				E9FD5AC229F8883300E11066 /* EnglishSecond.jpg in Resources */,
 				E95A076B29EB3B7000C84290 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -264,6 +274,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9FD5AC029F8663A00E11066 /* SecondPasswordChangeViewController.swift in Sources */,
+				E9FD5ABE29F8661500E11066 /* FirstPasswordChangeViewController.swift in Sources */,
 				E95A076829EB3B7000C84290 /* ViewController.swift in Sources */,
 				E95A076429EB3B7000C84290 /* AppDelegate.swift in Sources */,
 				E9ED8A9029F0709100F99EAE /* RegistrationViewController.swift in Sources */,
