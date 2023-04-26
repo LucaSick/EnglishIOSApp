@@ -34,7 +34,7 @@ class SecondPasswordChangeViewController: UIViewController {
         NewPassword2TextField.borderStyle = UITextField.BorderStyle.none
         NewPassword2TextField.layer.addSublayer(bottomLine3)
         NewPassword2TextField.attributedPlaceholder = NSAttributedString(
-            string: "Новый пароль еще раз",
+            string: "Повторите новый пароль",
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.red]
         )
     }

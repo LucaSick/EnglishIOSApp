@@ -43,7 +43,7 @@ class RegistrationViewController: UIViewController {
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.red]
         )
         password2TextField.attributedPlaceholder = NSAttributedString(
-            string: "Пароль еще раз",
+            string: "Повторите пароль",
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.red]
         )
         emailTextField.attributedPlaceholder = NSAttributedString(
