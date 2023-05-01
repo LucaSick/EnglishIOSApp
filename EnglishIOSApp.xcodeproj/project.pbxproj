@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E9271E9C29FDAC7700279AF5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9271E9B29FDAC7700279AF5 /* ProfileViewController.swift */; };
+		E9271EA529FDB51700279AF5 /* SidebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9271EA429FDB51700279AF5 /* SidebarViewController.swift */; };
+		E9271EA729FDB54C00279AF5 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9271EA629FDB54C00279AF5 /* MenuViewController.swift */; };
+		E9271EA929FE847700279AF5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9271EA829FE847700279AF5 /* SettingsViewController.swift */; };
+		E9271EAB29FE930A00279AF5 /* LessonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9271EAA29FE930A00279AF5 /* LessonsViewController.swift */; };
 		E95A076429EB3B7000C84290 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95A076329EB3B7000C84290 /* AppDelegate.swift */; };
 		E95A076629EB3B7000C84290 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95A076529EB3B7000C84290 /* SceneDelegate.swift */; };
 		E95A076829EB3B7000C84290 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95A076729EB3B7000C84290 /* ViewController.swift */; };
@@ -41,6 +46,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E9271E9B29FDAC7700279AF5 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		E9271EA429FDB51700279AF5 /* SidebarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarViewController.swift; sourceTree = "<group>"; };
+		E9271EA629FDB54C00279AF5 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		E9271EA829FE847700279AF5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		E9271EAA29FE930A00279AF5 /* LessonsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonsViewController.swift; sourceTree = "<group>"; };
 		E95A076029EB3B7000C84290 /* EnglishIOSApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EnglishIOSApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E95A076329EB3B7000C84290 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E95A076529EB3B7000C84290 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +96,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E9271EA329FDB4C000279AF5 /* SidebarViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				E9271EA429FDB51700279AF5 /* SidebarViewController.swift */,
+				E9271E9B29FDAC7700279AF5 /* ProfileViewController.swift */,
+				E9271EA829FE847700279AF5 /* SettingsViewController.swift */,
+				E9271EA629FDB54C00279AF5 /* MenuViewController.swift */,
+				E9271EAA29FE930A00279AF5 /* LessonsViewController.swift */,
+			);
+			path = SidebarViewControllers;
+			sourceTree = "<group>";
+		};
 		E95A075729EB3B7000C84290 = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +131,7 @@
 		E95A076229EB3B7000C84290 /* EnglishIOSApp */ = {
 			isa = PBXGroup;
 			children = (
+				E9271EA329FDB4C000279AF5 /* SidebarViewControllers */,
 				E95A076329EB3B7000C84290 /* AppDelegate.swift */,
 				E95A076529EB3B7000C84290 /* SceneDelegate.swift */,
 				E95A076729EB3B7000C84290 /* ViewController.swift */,
@@ -274,12 +297,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9271EAB29FE930A00279AF5 /* LessonsViewController.swift in Sources */,
 				E9FD5AC029F8663A00E11066 /* SecondPasswordChangeViewController.swift in Sources */,
+				E9271EA729FDB54C00279AF5 /* MenuViewController.swift in Sources */,
+				E9271EA929FE847700279AF5 /* SettingsViewController.swift in Sources */,
 				E9FD5ABE29F8661500E11066 /* FirstPasswordChangeViewController.swift in Sources */,
 				E95A076829EB3B7000C84290 /* ViewController.swift in Sources */,
 				E95A076429EB3B7000C84290 /* AppDelegate.swift in Sources */,
 				E9ED8A9029F0709100F99EAE /* RegistrationViewController.swift in Sources */,
 				E9FD5AB429F43D9400E11066 /* EmailConfirmationViewController.swift in Sources */,
+				E9271E9C29FDAC7700279AF5 /* ProfileViewController.swift in Sources */,
+				E9271EA529FDB51700279AF5 /* SidebarViewController.swift in Sources */,
 				E95A076629EB3B7000C84290 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

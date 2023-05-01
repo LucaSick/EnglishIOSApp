@@ -134,6 +134,11 @@ class ViewController: UIViewController {
                     print("Error: Couldn't print JSON in String")
                     return
                 }
+                DispatchQueue.main.async {
+                    let SidebarViewController = self.storyboard?.instantiateViewController(withIdentifier: "SidebarViewController") as! SidebarViewController
+                    SidebarViewController.modalPresentationStyle = .fullScreen
+                    self.present(SidebarViewController, animated: true)
+                }
                 print(prettyPrintedJson)
             } catch {
                 print("Error: Trying to convert JSON data to string")
