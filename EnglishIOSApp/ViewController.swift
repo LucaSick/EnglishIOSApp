@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import JWTDecode
 
 class ViewController: UIViewController {
     
@@ -134,10 +135,21 @@ class ViewController: UIViewController {
                     print("Error: Couldn't print JSON in String")
                     return
                 }
-                DispatchQueue.main.async {
-                    let SidebarViewController = self.storyboard?.instantiateViewController(withIdentifier: "SidebarViewController") as! SidebarViewController
-                    SidebarViewController.modalPresentationStyle = .fullScreen
-                    self.present(SidebarViewController, animated: true)
+                let data = jsonObject["data"] as! [String: String]
+                let jwt = try decode(jwt: data["accessToken"]!)
+                if let role = jwt["role"].integer {
+                    print("Role is \(role)")
+                    if role == 0 {
+                        DispatchQueue.main.async {
+                            let SidebarViewController = self.storyboard?.instantiateViewController(withIdentifier: "SidebarViewController") as! SidebarViewController
+                            SidebarViewController.modalPresentationStyle = .fullScreen
+                            self.present(SidebarViewController, animated: true)
+                        }
+                    } else if role == 1 {
+                        print("Teacher is not supported now")
+                    } else {
+                        print("Role is not correct")
+                    }
                 }
                 print(prettyPrintedJson)
             } catch {
