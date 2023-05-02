@@ -10,7 +10,7 @@ import UIKit
 class RegistrationViewController: UIViewController {
     
     func isValidEmail(testStr:String) -> Bool {
-        let emailRegEx = "[1-9a-zA-Z_\\.]+@[a-zA-Z_]+\\.[a-zA-Z]{2,3}"
+        let emailRegEx = "[1-9a-zA-Z_\\.]+@[a-zA-Z_\\.]+\\.[a-zA-Z]{2,3}"
         
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: testStr)
@@ -136,11 +136,14 @@ class RegistrationViewController: UIViewController {
                 }
                 let success = jsonObject["success"] as! Bool
                 print(success)
-                if (success == false) {
-                    let reason = jsonObject["reason"] as! String
+                if (success == true) {
                     DispatchQueue.main.async {
-                        self.showAlert(title: "Ошибка во время регистрации", message: reason)
-                        return
+                        let EmailConfirmationViewController = self.storyboard?.instantiateViewController(withIdentifier: "EmailConfirmationViewController") as! EmailConfirmationViewController
+                        self.present(EmailConfirmationViewController, animated:true, completion:nil)
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        self.showAlert(title: "Ошибка во время регистрации", message: "Пользователь уже зарегистрирован")
                     }
                 }
                 guard let prettyJsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted) else {
@@ -153,10 +156,6 @@ class RegistrationViewController: UIViewController {
                 }
                 
                 print(prettyPrintedJson)
-                DispatchQueue.main.async {
-                    let EmailConfirmationViewController = self.storyboard?.instantiateViewController(withIdentifier: "EmailConfirmationViewController") as! EmailConfirmationViewController
-                    self.present(EmailConfirmationViewController, animated:true, completion:nil)
-                }
             } catch {
                 print("Error: Trying to convert JSON data to string")
                 return

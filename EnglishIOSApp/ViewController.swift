@@ -45,7 +45,7 @@ class ViewController: UIViewController {
     }
     
     func isValidEmail(testStr:String) -> Bool {
-        let emailRegEx = "[1-9a-zA-Z_\\.]+@[a-zA-Z_]+\\.[a-zA-Z]{2,3}"
+        let emailRegEx = "[1-9a-zA-Z_\\.]+@[a-zA-Z_\\.]+\\.[a-zA-Z]{2,3}"
         
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: testStr)
@@ -123,8 +123,8 @@ class ViewController: UIViewController {
                 if (success == false) {
                     DispatchQueue.main.async {
                         self.showAlert(title: "Ошибка во время входа", message: "Неверная почта или пароль")
-                        return
                     }
+                    return
                 }
                 print(success)
                 guard let prettyJsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted) else {
@@ -146,7 +146,11 @@ class ViewController: UIViewController {
                             self.present(SidebarViewController, animated: true)
                         }
                     } else if role == 1 {
-                        print("Teacher is not supported now")
+                        DispatchQueue.main.async {
+                            let TeacherSidebarViewController = self.storyboard?.instantiateViewController(withIdentifier: "TeacherSidebarViewController") as! TeacherSidebarViewController
+                            TeacherSidebarViewController.modalPresentationStyle = .fullScreen
+                            self.present(TeacherSidebarViewController, animated: true)
+                        }
                     } else {
                         print("Role is not correct")
                     }
