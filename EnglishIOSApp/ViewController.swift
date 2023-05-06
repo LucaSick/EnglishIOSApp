@@ -124,9 +124,29 @@ class ViewController: UIViewController {
                     DispatchQueue.main.async {
                         self.showAlert(title: "Ошибка во время входа", message: "Неверная почта или пароль")
                     }
-                    return
                 }
-                print(success)
+                else {
+                    let data = jsonObject["data"] as! [String: String]
+                    let jwt = try decode(jwt: data["accessToken"]!)
+                    if let role = jwt["role"].integer {
+                        print("Role is \(role)")
+                        if role == 0 {
+                            DispatchQueue.main.async {
+                                let SidebarViewController = self.storyboard?.instantiateViewController(withIdentifier: "SidebarViewController") as! SidebarViewController
+                                SidebarViewController.modalPresentationStyle = .fullScreen
+                                self.present(SidebarViewController, animated: true)
+                            }
+                        } else if role == 1 {
+                            DispatchQueue.main.async {
+                                let TeacherSidebarViewController = self.storyboard?.instantiateViewController(withIdentifier: "TeacherSidebarViewController") as! TeacherSidebarViewController
+                                TeacherSidebarViewController.modalPresentationStyle = .fullScreen
+                                self.present(TeacherSidebarViewController, animated: true)
+                            }
+                        } else {
+                            print("Role is not correct")
+                        }
+                    }
+                }
                 guard let prettyJsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted) else {
                     print("Error: Cannot convert JSON object to Pretty JSON data")
                     return
@@ -134,26 +154,6 @@ class ViewController: UIViewController {
                 guard let prettyPrintedJson = String(data: prettyJsonData, encoding: .utf8) else {
                     print("Error: Couldn't print JSON in String")
                     return
-                }
-                let data = jsonObject["data"] as! [String: String]
-                let jwt = try decode(jwt: data["accessToken"]!)
-                if let role = jwt["role"].integer {
-                    print("Role is \(role)")
-                    if role == 0 {
-                        DispatchQueue.main.async {
-                            let SidebarViewController = self.storyboard?.instantiateViewController(withIdentifier: "SidebarViewController") as! SidebarViewController
-                            SidebarViewController.modalPresentationStyle = .fullScreen
-                            self.present(SidebarViewController, animated: true)
-                        }
-                    } else if role == 1 {
-                        DispatchQueue.main.async {
-                            let TeacherSidebarViewController = self.storyboard?.instantiateViewController(withIdentifier: "TeacherSidebarViewController") as! TeacherSidebarViewController
-                            TeacherSidebarViewController.modalPresentationStyle = .fullScreen
-                            self.present(TeacherSidebarViewController, animated: true)
-                        }
-                    } else {
-                        print("Role is not correct")
-                    }
                 }
                 print(prettyPrintedJson)
             } catch {
