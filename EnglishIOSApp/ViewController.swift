@@ -134,12 +134,16 @@ class ViewController: UIViewController {
                             DispatchQueue.main.async {
                                 let SidebarViewController = self.storyboard?.instantiateViewController(withIdentifier: "SidebarViewController") as! SidebarViewController
                                 SidebarViewController.modalPresentationStyle = .fullScreen
+                                SidebarViewController.refreshToken = data["refreshToken"]!
+                                SidebarViewController.accessToken = data["accessToken"]!
                                 self.present(SidebarViewController, animated: true)
                             }
                         } else if role == 1 {
                             DispatchQueue.main.async {
                                 let TeacherSidebarViewController = self.storyboard?.instantiateViewController(withIdentifier: "TeacherSidebarViewController") as! TeacherSidebarViewController
                                 TeacherSidebarViewController.modalPresentationStyle = .fullScreen
+                                TeacherSidebarViewController.refreshToken = data["refreshToken"]!
+                                TeacherSidebarViewController.accessToken = data["accessToken"]!
                                 self.present(TeacherSidebarViewController, animated: true)
                             }
                         } else {

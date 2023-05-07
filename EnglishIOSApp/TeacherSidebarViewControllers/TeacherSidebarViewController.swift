@@ -8,6 +8,9 @@
 import UIKit
 
 class TeacherSidebarViewController: UIViewController {
+    var refreshToken: String!
+    var accessToken: String!
+    
     enum MenuState {
         case opened
         case closed
@@ -22,6 +25,7 @@ class TeacherSidebarViewController: UIViewController {
     lazy var lessonsVC = TeacherLessonsViewController()
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(refreshToken ?? "empty")
         addChildVC()
         // Do any additional setup after loading the view.
     }
@@ -36,6 +40,8 @@ class TeacherSidebarViewController: UIViewController {
         // Home
         ProfileVC = (storyboard?.instantiateViewController(withIdentifier: "TeacherProfileViewController") as? TeacherProfileViewController)!
         ProfileVC.delegate = self
+        ProfileVC.refreshToken = refreshToken
+        ProfileVC.accessToken = accessToken
         let navigationViewController = UINavigationController(rootViewController: ProfileVC)
         addChild(navigationViewController)
         view.addSubview(navigationViewController.view)

@@ -8,6 +8,10 @@
 import UIKit
 
 class SidebarViewController: UIViewController {
+    
+    var refreshToken: String!
+    var accessToken: String!
+    
     enum MenuState {
         case opened
         case closed
@@ -36,6 +40,8 @@ class SidebarViewController: UIViewController {
         // Home
         ProfileVC = (storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as? ProfileViewController)!
         ProfileVC.delegate = self
+        ProfileVC.refreshToken = refreshToken
+        ProfileVC.accessToken = accessToken
         let navigationViewController = UINavigationController(rootViewController: ProfileVC)
         addChild(navigationViewController)
         view.addSubview(navigationViewController.view)
