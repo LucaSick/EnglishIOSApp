@@ -211,21 +211,9 @@ class LessonsViewController: UIViewController, UITableViewDelegate, UITableViewD
         task.resume()
     }
     
-    func deleteRow(index: Int) {
-        let indexPath = IndexPath(row: index, section: 0)
-        self.TimesTableView.beginUpdates()
-        self.TimesTableView.deleteRows(at: [indexPath], with: .automatic)
-        self.TimesTableView.endUpdates()
-
-    }
-    
     @IBAction func GetTimesFunc(_ sender: Any) {
-//        if !times_arr.isEmpty {
-//            for i in stride(from: times_arr.count - 1, to: 0, by: -1) {
-//                deleteRow(index: i)
-//                times_arr.remove(at: i)
-//            }
-//        }
+        times_arr.removeAll()
+        TimesTableView.reloadData()
         if !DateTextField.hasText {
             showAlert(title: "Ошибка", message: "Введите дату в нужном формате")
         }
