@@ -109,6 +109,8 @@ extension SidebarViewController: MenuViewControllerDelegate {
     func addLessons() {
         settingsVC.view.removeFromSuperview()
         lessonsVC = (storyboard?.instantiateViewController(withIdentifier: "LessonsViewController") as? LessonsViewController)!
+        lessonsVC.accessToken = ProfileVC.accessToken
+        lessonsVC.refreshToken = ProfileVC.refreshToken
         let vc = lessonsVC
         ProfileVC.addChild(vc)
         ProfileVC.view.addSubview(vc.view)

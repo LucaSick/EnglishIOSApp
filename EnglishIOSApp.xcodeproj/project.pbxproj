@@ -24,6 +24,7 @@
 		E9271EC92A07CC0E00279AF5 /* FIOViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9271EC82A07CC0E00279AF5 /* FIOViewController.swift */; };
 		E9271ECB2A07CC1800279AF5 /* PhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9271ECA2A07CC1800279AF5 /* PhoneViewController.swift */; };
 		E9271ECF2A07CC4F00279AF5 /* TelegramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9271ECE2A07CC4F00279AF5 /* TelegramViewController.swift */; };
+		E9271ED12A0A5EFC00279AF5 /* StudentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9271ED02A0A5EFC00279AF5 /* StudentTableViewCell.swift */; };
 		E95A076429EB3B7000C84290 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95A076329EB3B7000C84290 /* AppDelegate.swift */; };
 		E95A076629EB3B7000C84290 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95A076529EB3B7000C84290 /* SceneDelegate.swift */; };
 		E95A076829EB3B7000C84290 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95A076729EB3B7000C84290 /* ViewController.swift */; };
@@ -74,6 +75,7 @@
 		E9271EC82A07CC0E00279AF5 /* FIOViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIOViewController.swift; sourceTree = "<group>"; };
 		E9271ECA2A07CC1800279AF5 /* PhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneViewController.swift; sourceTree = "<group>"; };
 		E9271ECE2A07CC4F00279AF5 /* TelegramViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelegramViewController.swift; sourceTree = "<group>"; };
+		E9271ED02A0A5EFC00279AF5 /* StudentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentTableViewCell.swift; sourceTree = "<group>"; };
 		E95A076029EB3B7000C84290 /* EnglishIOSApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EnglishIOSApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E95A076329EB3B7000C84290 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E95A076529EB3B7000C84290 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				E9271EA829FE847700279AF5 /* SettingsViewController.swift */,
 				E9271EA629FDB54C00279AF5 /* MenuViewController.swift */,
 				E9271EAA29FE930A00279AF5 /* LessonsViewController.swift */,
+				E9271ED02A0A5EFC00279AF5 /* StudentTableViewCell.swift */,
 			);
 			path = SidebarViewControllers;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 				E9271ECB2A07CC1800279AF5 /* PhoneViewController.swift in Sources */,
 				E9271EA529FDB51700279AF5 /* SidebarViewController.swift in Sources */,
 				E95A076629EB3B7000C84290 /* SceneDelegate.swift in Sources */,
+				E9271ED12A0A5EFC00279AF5 /* StudentTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
