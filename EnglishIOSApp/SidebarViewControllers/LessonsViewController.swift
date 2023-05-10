@@ -224,7 +224,6 @@ class LessonsViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func Request() {
-        TimesTableView.register(StudentTableViewCell.self, forCellReuseIdentifier: StudentTableViewCell.identifier)
         guard let url = URL(string: "http://localhost:8080/teacherScheduleApi/startClassConfirmation") else { return }
         
         struct Body: Codable {

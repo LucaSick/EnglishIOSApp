@@ -25,6 +25,7 @@
 		E9271ECB2A07CC1800279AF5 /* PhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9271ECA2A07CC1800279AF5 /* PhoneViewController.swift */; };
 		E9271ECF2A07CC4F00279AF5 /* TelegramViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9271ECE2A07CC4F00279AF5 /* TelegramViewController.swift */; };
 		E9271ED12A0A5EFC00279AF5 /* StudentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9271ED02A0A5EFC00279AF5 /* StudentTableViewCell.swift */; };
+		E9271ED32A0AFE1100279AF5 /* TeacherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9271ED22A0AFE1100279AF5 /* TeacherTableViewCell.swift */; };
 		E95A076429EB3B7000C84290 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95A076329EB3B7000C84290 /* AppDelegate.swift */; };
 		E95A076629EB3B7000C84290 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95A076529EB3B7000C84290 /* SceneDelegate.swift */; };
 		E95A076829EB3B7000C84290 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95A076729EB3B7000C84290 /* ViewController.swift */; };
@@ -76,6 +77,7 @@
 		E9271ECA2A07CC1800279AF5 /* PhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneViewController.swift; sourceTree = "<group>"; };
 		E9271ECE2A07CC4F00279AF5 /* TelegramViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TelegramViewController.swift; sourceTree = "<group>"; };
 		E9271ED02A0A5EFC00279AF5 /* StudentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentTableViewCell.swift; sourceTree = "<group>"; };
+		E9271ED22A0AFE1100279AF5 /* TeacherTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherTableViewCell.swift; sourceTree = "<group>"; };
 		E95A076029EB3B7000C84290 /* EnglishIOSApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EnglishIOSApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E95A076329EB3B7000C84290 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E95A076529EB3B7000C84290 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				E9271EB42A019F1900279AF5 /* TeacherSettingsViewController.swift */,
 				E9271EB62A019F3600279AF5 /* TeacherMenuViewController.swift */,
 				E9271EB82A019F5200279AF5 /* TeacherLessonsViewController.swift */,
+				E9271ED22A0AFE1100279AF5 /* TeacherTableViewCell.swift */,
 			);
 			path = TeacherSidebarViewControllers;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 				E9271EC62A06A02200279AF5 /* TeacherTelegramViewController.swift in Sources */,
 				E9271EA729FDB54C00279AF5 /* MenuViewController.swift in Sources */,
 				E9271EA929FE847700279AF5 /* SettingsViewController.swift in Sources */,
+				E9271ED32A0AFE1100279AF5 /* TeacherTableViewCell.swift in Sources */,
 				E9FD5ABE29F8661500E11066 /* FirstPasswordChangeViewController.swift in Sources */,
 				E9271EB32A019F0400279AF5 /* TeacherProfileViewController.swift in Sources */,
 				E9271EC22A069FDF00279AF5 /* TeacherFIOViewController.swift in Sources */,
