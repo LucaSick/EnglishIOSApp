@@ -99,6 +99,8 @@ extension SidebarViewController: MenuViewControllerDelegate {
     func addSettings() {
         lessonsVC.view.removeFromSuperview()
         settingsVC = (storyboard?.instantiateViewController(withIdentifier: "SettingsViewController") as? SettingsViewController)!
+        settingsVC.accessToken = ProfileVC.accessToken
+        settingsVC.refreshToken = ProfileVC.refreshToken
         let vc = settingsVC
         ProfileVC.addChild(vc)
         ProfileVC.view.addSubview(vc.view)

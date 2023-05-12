@@ -45,7 +45,8 @@ class TeacherMenuViewController: UIViewController, UITableViewDelegate, UITableV
     enum MenuOptions: String, CaseIterable {
         case profile = "Профиль"
         case lessons = "Занятия"
-        case settings = "Настройки"
+        case settings = "Создать ДЗ"
+        case grade = "Оценка ДЗ"
         
         var imageName: String {
             switch self {
@@ -54,7 +55,9 @@ class TeacherMenuViewController: UIViewController, UITableViewDelegate, UITableV
             case .lessons:
                 return "book.fill"
             case .settings:
-                return "gear"
+                return "books.vertical.fill"
+            case .grade:
+                return "pencil"
             }
         }
     }

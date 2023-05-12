@@ -23,6 +23,7 @@ class TeacherSidebarViewController: UIViewController {
     var navVC: UINavigationController?
     lazy var settingsVC = TeacherSettingsViewController()
     lazy var lessonsVC = TeacherLessonsViewController()
+    lazy var gradeVC = TeacherGradeViewController()
     override func viewDidLoad() {
         super.viewDidLoad()
         print(refreshToken ?? "empty")
@@ -93,12 +94,19 @@ extension TeacherSidebarViewController: TeacherMenuViewControllerDelegate {
         case .settings:
             self.resetToHome()
             self.addSettings()
+        case .grade:
+            self.resetToHome()
+            self.addGrade()
         }
     }
     
     func addSettings() {
         lessonsVC.view.removeFromSuperview()
+        gradeVC.view.removeFromSuperview()
         settingsVC = (storyboard?.instantiateViewController(withIdentifier: "TeacherSettingsViewController") as? TeacherSettingsViewController)!
+        settingsVC.refreshToken = ProfileVC.refreshToken
+        settingsVC.accessToken = ProfileVC.accessToken
+        print(settingsVC.refreshToken!)
         let vc = settingsVC
         ProfileVC.addChild(vc)
         ProfileVC.view.addSubview(vc.view)
@@ -108,10 +116,24 @@ extension TeacherSidebarViewController: TeacherMenuViewControllerDelegate {
     
     func addLessons() {
         settingsVC.view.removeFromSuperview()
+        gradeVC.view.removeFromSuperview()
         lessonsVC = (storyboard?.instantiateViewController(withIdentifier: "TeacherLessonsViewController") as? TeacherLessonsViewController)!
         lessonsVC.refreshToken = ProfileVC.refreshToken
         lessonsVC.accessToken = ProfileVC.accessToken
         let vc = lessonsVC
+        ProfileVC.addChild(vc)
+        ProfileVC.view.addSubview(vc.view)
+        vc.view.frame = view.frame
+        vc.didMove(toParent: ProfileVC)
+    }
+    
+    func addGrade() {
+        lessonsVC.view.removeFromSuperview()
+        settingsVC.view.removeFromSuperview()
+        gradeVC = (storyboard?.instantiateViewController(withIdentifier: "TeacherGradeViewController") as? TeacherGradeViewController)!
+        gradeVC.refreshToken = ProfileVC.refreshToken
+        gradeVC.accessToken = ProfileVC.accessToken
+        let vc = gradeVC
         ProfileVC.addChild(vc)
         ProfileVC.view.addSubview(vc.view)
         vc.view.frame = view.frame
@@ -123,5 +145,7 @@ extension TeacherSidebarViewController: TeacherMenuViewControllerDelegate {
         settingsVC.didMove(toParent: nil)
         lessonsVC.view.removeFromSuperview()
         lessonsVC.didMove(toParent: nil)
+        gradeVC.view.removeFromSuperview()
+        gradeVC.didMove(toParent: nil)
     }
 }
