@@ -12,9 +12,6 @@ protocol TeacherProfileViewControllerDelegate: AnyObject {
 }
 
 class TeacherProfileViewController: UIViewController {
-
-    var refreshToken: String!
-    var accessToken: String!
     
     func showAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
@@ -76,8 +73,8 @@ class TeacherProfileViewController: UIViewController {
                 }
                 else {
                     let data = jsonObject["data"] as! [String: String]
-                    accessToken = data["accessToken"]
-                    refreshToken = data["refreshToken"]
+                    accessToken = data["accessToken"]!
+                    refreshToken = data["refreshToken"]!
                     
                 }
                 guard let prettyJsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted) else {
@@ -174,13 +171,6 @@ class TeacherProfileViewController: UIViewController {
 //                        if profile["fio"] as! String != "" {
 //                            self.FIO.text = profile["fio"] as? String
 //                        }
-//                        if profile["phone"] as! String != "" {
-//                            self.Phone.text = profile["phone"] as? String
-//                        }
-//                        if profile["telegram"] as! String != "" {
-//                            self.Telegram.text = profile["telegram"] as? String
-//                        }
-//                        self.telegramLink = data["telegramDeeplink"] as? String
                     }
                 } else {
                     DispatchQueue.main.async {

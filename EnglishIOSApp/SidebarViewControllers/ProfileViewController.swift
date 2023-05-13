@@ -12,9 +12,6 @@ protocol ProfileViewControllerDelegate: AnyObject {
 }
 
 class ProfileViewController: UIViewController {
-    
-    var refreshToken: String!
-    var accessToken: String!
     var telegramLink: String!
     
     func showAlert(title: String, message: String) {
@@ -34,7 +31,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var Phone: UILabel!
     @IBOutlet weak var FIO: UILabel!
     @IBOutlet weak var Telegram: UILabel!
-    
+    @IBOutlet weak var Teacher: UILabel!
     func updateTokens() {
         guard let url = URL(string: "http://localhost:8080/authApi/refresh") else { return }
         
@@ -89,8 +86,8 @@ class ProfileViewController: UIViewController {
                 }
                 else {
                     let data = jsonObject["data"] as! [String: String]
-                    accessToken = data["accessToken"]
-                    refreshToken = data["refreshToken"]
+                    accessToken = data["accessToken"]!
+                    refreshToken = data["refreshToken"]!
                     
                 }
                 guard let prettyJsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted) else {
@@ -117,7 +114,6 @@ class ProfileViewController: UIViewController {
 //        }
         updateTokens()
         let FIOViewController = self.storyboard?.instantiateViewController(withIdentifier: "FIOViewController") as! FIOViewController
-        FIOViewController.accessToken = accessToken
         self.present(FIOViewController, animated: true)
     }
     
@@ -128,8 +124,6 @@ class ProfileViewController: UIViewController {
 //        }
         updateTokens()
         let PhoneViewController = self.storyboard?.instantiateViewController(withIdentifier: "PhoneViewController") as! PhoneViewController
-        // change to accessToken
-        PhoneViewController.accessToken = refreshToken
         self.present(PhoneViewController, animated: true)
     }
     
@@ -140,8 +134,6 @@ class ProfileViewController: UIViewController {
 //        }
         updateTokens()
         let TelegramViewController = self.storyboard?.instantiateViewController(withIdentifier: "TelegramViewController") as! TelegramViewController
-        // change to accessToken
-        TelegramViewController.accessToken = accessToken
         TelegramViewController.telegramLink = telegramLink
         self.present(TelegramViewController, animated: true)
     }
@@ -212,8 +204,73 @@ class ProfileViewController: UIViewController {
         }.resume()
     }
     
+    func GetTeacher() {
+        guard let url = URL(string: "http://localhost:8080/profileApi/teacherInfo") else { return }
+        
+        // Create the url request
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type") // the request is JSON
+        request.setValue("Bearer " + accessToken, forHTTPHeaderField: "Authorization")
+        var success = true
+        var code = 200
+        let task = URLSession.shared.dataTask(with: request) { [self] data, response, error in
+            guard error == nil else {
+                print("Error: error calling POST")
+                print(error!)
+                return
+            }
+            guard let data = data else {
+                print("Error: Did not receive data")
+                return
+            }
+            if let httpresponse = response as? HTTPURLResponse {
+                code = httpresponse.statusCode
+                if (code == 500) {
+                    DispatchQueue.main.async {
+                        self.showAlert(title: "Ошибка", message: "Попробуйте снова")
+                        return
+                    }
+                }
+                print(code)
+            }
+            do {
+                guard let jsonObject = try JSONSerialization.jsonObject(with: data) as? [String: Any] else {
+                    print("Error: Cannot convert data to JSON object")
+                    return
+                }
+                success = jsonObject["success"] as! Bool
+                if (success == false) {
+                    DispatchQueue.main.async {
+                        self.showAlert(title: "Ошибка", message: "Попробуйте снова")
+                    }
+                }
+                else {
+                    DispatchQueue.main.async {
+                        let data = jsonObject["data"] as! [String: String]
+                        self.Teacher.text = data["fio"]
+                    }
+                }
+                guard let prettyJsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted) else {
+                    print("Error: Cannot convert JSON object to Pretty JSON data")
+                    return
+                }
+                guard let prettyPrintedJson = String(data: prettyJsonData, encoding: .utf8) else {
+                    print("Error: Couldn't print JSON in String")
+                    return
+                }
+                print(prettyPrintedJson)
+            } catch {
+                print("Error: Trying to convert JSON data to string")
+                return
+            }
+        }
+        task.resume()
+    }
+    
     @IBAction func Update(_ sender: Any) {
         GetData()
+        GetTeacher()
     }
     
     @IBAction func BackToSignIn(_ sender: Any) {
@@ -231,6 +288,7 @@ class ProfileViewController: UIViewController {
                                                            target: self,
                                                            action: #selector(didTapMenuButton))
         GetData()
+        GetTeacher()
     }
 
     @objc func didTapMenuButton() {

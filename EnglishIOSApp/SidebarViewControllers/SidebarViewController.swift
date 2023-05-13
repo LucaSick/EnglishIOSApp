@@ -9,9 +9,6 @@ import UIKit
 
 class SidebarViewController: UIViewController {
     
-    var refreshToken: String!
-    var accessToken: String!
-    
     enum MenuState {
         case opened
         case closed
@@ -24,6 +21,7 @@ class SidebarViewController: UIViewController {
     var navVC: UINavigationController?
     lazy var settingsVC = SettingsViewController()
     lazy var lessonsVC = LessonsViewController()
+    lazy var teacherVC = ChangeTeacherViewController()
     override func viewDidLoad() {
         super.viewDidLoad()
         addChildVC()
@@ -40,8 +38,6 @@ class SidebarViewController: UIViewController {
         // Home
         ProfileVC = (storyboard?.instantiateViewController(withIdentifier: "ProfileViewController") as? ProfileViewController)!
         ProfileVC.delegate = self
-        ProfileVC.refreshToken = refreshToken
-        ProfileVC.accessToken = accessToken
         let navigationViewController = UINavigationController(rootViewController: ProfileVC)
         addChild(navigationViewController)
         view.addSubview(navigationViewController.view)
@@ -93,14 +89,16 @@ extension SidebarViewController: MenuViewControllerDelegate {
         case .settings:
             self.resetToHome()
             self.addSettings()
+        case .teacher:
+            self.resetToHome()
+            self.addTeacher()
         }
     }
     
     func addSettings() {
         lessonsVC.view.removeFromSuperview()
+        teacherVC.view.removeFromSuperview()
         settingsVC = (storyboard?.instantiateViewController(withIdentifier: "SettingsViewController") as? SettingsViewController)!
-        settingsVC.accessToken = ProfileVC.accessToken
-        settingsVC.refreshToken = ProfileVC.refreshToken
         let vc = settingsVC
         ProfileVC.addChild(vc)
         ProfileVC.view.addSubview(vc.view)
@@ -110,10 +108,20 @@ extension SidebarViewController: MenuViewControllerDelegate {
     
     func addLessons() {
         settingsVC.view.removeFromSuperview()
+        teacherVC.view.removeFromSuperview()
         lessonsVC = (storyboard?.instantiateViewController(withIdentifier: "LessonsViewController") as? LessonsViewController)!
-        lessonsVC.accessToken = ProfileVC.accessToken
-        lessonsVC.refreshToken = ProfileVC.refreshToken
         let vc = lessonsVC
+        ProfileVC.addChild(vc)
+        ProfileVC.view.addSubview(vc.view)
+        vc.view.frame = view.frame
+        vc.didMove(toParent: ProfileVC)
+    }
+    
+    func addTeacher() {
+        lessonsVC.view.removeFromSuperview()
+        settingsVC.view.removeFromSuperview()
+        teacherVC = (storyboard?.instantiateViewController(withIdentifier: "ChangeTeacherViewController") as? ChangeTeacherViewController)!
+        let vc = teacherVC
         ProfileVC.addChild(vc)
         ProfileVC.view.addSubview(vc.view)
         vc.view.frame = view.frame

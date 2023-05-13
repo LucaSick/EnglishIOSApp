@@ -9,8 +9,6 @@ import UIKit
 import DropDown
 
 class TeacherGradeViewController: UIViewController {
-    var refreshToken: String!
-    var accessToken: String!
     var dropDown = DropDown()
     
     var curr_student_id: String = ""
@@ -80,9 +78,8 @@ class TeacherGradeViewController: UIViewController {
                 }
                 else {
                     let data = jsonObject["data"] as! [String: String]
-                    accessToken = data["accessToken"]
-                    refreshToken = data["refreshToken"]
-                    
+                    accessToken = data["accessToken"]!
+                    refreshToken = data["refreshToken"]!
                 }
                 guard let prettyJsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted) else {
                     print("Error: Cannot convert JSON object to Pretty JSON data")
@@ -194,7 +191,7 @@ class TeacherGradeViewController: UIViewController {
     @IBOutlet weak var HomeworkTextView: UITextView!
     
     func getHomework() {
-        guard let url = URL(string: "http://localhost:8080/homeworkTeacherApi/getHomework/" + curr_student_id + "/" + TopicTextField.text!) else { return }
+        guard let url = URL(string: "http://localhost:8080/homeworkTeacherApi/getAllData") else { return }
         
         // Create the url request
         var request = URLRequest(url: url)
@@ -235,7 +232,14 @@ class TeacherGradeViewController: UIViewController {
                 }
                 else {
                     DispatchQueue.main.async {
-                        self.HomeworkTextView.text = jsonObject["data"] as? String
+                        let data = jsonObject["data"] as! [String: Any]
+                        let homeworks = data["pendingHomeworkData"] as! [[String: String]]
+                        for homework in homeworks {
+                            if homework["topic"] == self.TopicTextField.text! && homework["studentId"] == self.curr_student_id {
+                                self.HomeworkTextView.text = homework["homework"]
+                                break
+                            }
+                        }
                     }
                 }
                 guard let prettyJsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted) else {

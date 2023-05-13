@@ -14,8 +14,6 @@ class PhoneViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(action) in alert.dismiss(animated: true, completion: nil)}))
         self.present(alert, animated: true, completion: nil)
     }
-
-    var accessToken: String!
     
     @IBOutlet weak var ConfirmButton: UIButton!
     @IBOutlet weak var СallButton: UIButton!

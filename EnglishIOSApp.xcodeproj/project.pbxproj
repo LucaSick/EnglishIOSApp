@@ -30,6 +30,7 @@
 		E9271ED12A0A5EFC00279AF5 /* StudentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9271ED02A0A5EFC00279AF5 /* StudentTableViewCell.swift */; };
 		E9271ED32A0AFE1100279AF5 /* TeacherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9271ED22A0AFE1100279AF5 /* TeacherTableViewCell.swift */; };
 		E9271ED52A0D9A9A00279AF5 /* TeacherGradeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9271ED42A0D9A9A00279AF5 /* TeacherGradeViewController.swift */; };
+		E9271ED72A0EA14500279AF5 /* ChangeTeacherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9271ED62A0EA14500279AF5 /* ChangeTeacherViewController.swift */; };
 		E95A076429EB3B7000C84290 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95A076329EB3B7000C84290 /* AppDelegate.swift */; };
 		E95A076629EB3B7000C84290 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95A076529EB3B7000C84290 /* SceneDelegate.swift */; };
 		E95A076829EB3B7000C84290 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95A076729EB3B7000C84290 /* ViewController.swift */; };
@@ -92,6 +93,7 @@
 		E9271ED02A0A5EFC00279AF5 /* StudentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentTableViewCell.swift; sourceTree = "<group>"; };
 		E9271ED22A0AFE1100279AF5 /* TeacherTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherTableViewCell.swift; sourceTree = "<group>"; };
 		E9271ED42A0D9A9A00279AF5 /* TeacherGradeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherGradeViewController.swift; sourceTree = "<group>"; };
+		E9271ED62A0EA14500279AF5 /* ChangeTeacherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeTeacherViewController.swift; sourceTree = "<group>"; };
 		E95A076029EB3B7000C84290 /* EnglishIOSApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EnglishIOSApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E95A076329EB3B7000C84290 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E95A076529EB3B7000C84290 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				E9271EA629FDB54C00279AF5 /* MenuViewController.swift */,
 				E9271EAA29FE930A00279AF5 /* LessonsViewController.swift */,
 				E9271ED02A0A5EFC00279AF5 /* StudentTableViewCell.swift */,
+				E9271ED62A0EA14500279AF5 /* ChangeTeacherViewController.swift */,
 			);
 			path = SidebarViewControllers;
 			sourceTree = "<group>";
@@ -536,6 +539,7 @@
 				E9271EB12A019EEF00279AF5 /* TeacherSidebarViewController.swift in Sources */,
 				E9271EB72A019F3600279AF5 /* TeacherMenuViewController.swift in Sources */,
 				E9FD5AB429F43D9400E11066 /* EmailConfirmationViewController.swift in Sources */,
+				E9271ED72A0EA14500279AF5 /* ChangeTeacherViewController.swift in Sources */,
 				E9271EB92A019F5200279AF5 /* TeacherLessonsViewController.swift in Sources */,
 				E9271EC42A06A00E00279AF5 /* TeacherPhoneViewController.swift in Sources */,
 				E9271EC92A07CC0E00279AF5 /* FIOViewController.swift in Sources */,

@@ -91,8 +91,6 @@ class FIOViewController: UIViewController {
         }
         task.resume()
     }
-    
-    var accessToken: String!
 
 
     @IBOutlet weak var ConfirmButton: UIButton!

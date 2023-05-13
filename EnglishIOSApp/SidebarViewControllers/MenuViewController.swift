@@ -46,6 +46,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         case profile = "Профиль"
         case lessons = "Занятия"
         case settings = "ДЗ"
+        case teacher = "Учитель"
         
         var imageName: String {
             switch self {
@@ -55,6 +56,8 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
                 return "book.fill"
             case .settings:
                 return "books.vertical.fill"
+            case .teacher:
+                return "person.and.person.fill"
             }
         }
     }

@@ -31,10 +31,6 @@ class LessonsViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell.id = times_arr[indexPath.row].1
         return cell
     }
-    //UITableViewDelegate, UITableViewDataSource {
-    
-    var refreshToken: String!
-    var accessToken: String!
     
     func showAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
@@ -96,8 +92,8 @@ class LessonsViewController: UIViewController, UITableViewDelegate, UITableViewD
                 }
                 else {
                     let data = jsonObject["data"] as! [String: String]
-                    accessToken = data["accessToken"]
-                    refreshToken = data["refreshToken"]
+                    accessToken = data["accessToken"]!
+                    refreshToken = data["refreshToken"]!
                     
                 }
                 guard let prettyJsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted) else {

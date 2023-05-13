@@ -9,9 +9,6 @@ import UIKit
 
 class SettingsViewController: UIViewController {
     
-    var refreshToken: String!
-    var accessToken: String!
-    
     
     @IBOutlet weak var TopicTextField: UITextField!
     @IBOutlet weak var AssignmentTextView: UITextView!
@@ -84,8 +81,8 @@ class SettingsViewController: UIViewController {
                 }
                 else {
                     let data = jsonObject["data"] as! [String: String]
-                    accessToken = data["accessToken"]
-                    refreshToken = data["refreshToken"]
+                    accessToken = data["accessToken"]!
+                    refreshToken = data["refreshToken"]!
                     
                 }
                 guard let prettyJsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted) else {

@@ -15,8 +15,6 @@ class TelegramViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: {(action) in alert.dismiss(animated: true, completion: nil)}))
         self.present(alert, animated: true, completion: nil)
     }
-
-    var accessToken: String!
     var telegramLink: String!
     
     @IBOutlet weak var ConfirmButton: UIButton!

@@ -9,9 +9,6 @@ import UIKit
 import DropDown
 
 class TeacherSettingsViewController: UIViewController {
-    
-    var refreshToken: String!
-    var accessToken: String!
     var dropDown = DropDown()
     
     var curr_student_id: String = ""
@@ -76,8 +73,8 @@ class TeacherSettingsViewController: UIViewController {
                 }
                 else {
                     let data = jsonObject["data"] as! [String: String]
-                    accessToken = data["accessToken"]
-                    refreshToken = data["refreshToken"]
+                    accessToken = data["accessToken"]!
+                    refreshToken = data["refreshToken"]!
                     
                 }
                 guard let prettyJsonData = try? JSONSerialization.data(withJSONObject: jsonObject, options: .prettyPrinted) else {
