@@ -133,5 +133,7 @@ extension SidebarViewController: MenuViewControllerDelegate {
         settingsVC.didMove(toParent: nil)
         lessonsVC.view.removeFromSuperview()
         lessonsVC.didMove(toParent: nil)
+        teacherVC.view.removeFromSuperview()
+        teacherVC.didMove(toParent: nil)
     }
 }

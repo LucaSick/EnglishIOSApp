@@ -163,7 +163,7 @@ class TeacherProfileViewController: UIViewController {
                 print(success)
                 if (success == true) {
                     DispatchQueue.main.async {
-                        self.FIO.text = "Не введено"
+                        self.FIO.text = "Учителов Илья Георгиевич"
                         self.Phone.text = "Не введено"
                         self.Telegram.text = "Не введено"
 //                        let data = jsonObject["data"] as! [String: Any]
